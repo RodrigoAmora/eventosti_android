@@ -19,20 +19,37 @@ android {
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+
+            //buildConfigField "String", "BASE_URL_API", "\"http://10.0.2.2:8080/\""
+
+            buildConfigField "String", "DATABASE_NAME", "\"eventosti_database_dev.db\""
+            buildConfigField "String", "BASE_URL_API", "\"http://192.168.0.71:8080/\""
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "DATABASE_NAME", "\"eventosti_database.db\""
+            buildConfigField "String", "BASE_URL_API", "\"http://192.168.0.71:8080/\""
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     buildFeatures {
+        buildConfig true
         viewBinding true
+    }
+    viewBinding {
+        enabled = true
     }
 }
 
@@ -44,6 +61,9 @@ dependencies {
 
     // CONSTRAINT LAYOUT
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // KOIN
+    implementation "io.insert-koin:koin-android:3.4.1"
 
     // LIFECYCLE
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
