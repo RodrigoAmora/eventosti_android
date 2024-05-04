@@ -7,17 +7,17 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="action_settings">Configurações</string>
+    <string name="action_settings">Settings</string>
 
-    <string name="menu_lista_eventos">Lista Eventos</string>
+    <string name="menu_lista_eventos">List Events</string>
 
     <!-- ERROR MESSAGES-->
-    <string name="error_access_denied">Acesso negado!</string>
-    <string name="error_cant_was_possible_perform_operation">Não foi possível realizar a operação.</string>
-    <string name="error_service_unavailable">Serviço indisponível, por favor tente mais tarde.</string>
+    <string name="error_access_denied">Access denied!</string>
+    <string name="error_cant_was_possible_perform_operation">Can\'t was possible perform operation.</string>
+    <string name="error_service_unavailable">Service unavailable, please try later.</string>
 
-    <string name="error_no_internet">Sem internet!</string>
+    <string name="error_no_internet">No internet!</string>
 
 
-    <string name="tv_nome_evento_value">Nome evento</string>
+    <string name="tv_nome_evento_value">Name event</string>
 </resources>
