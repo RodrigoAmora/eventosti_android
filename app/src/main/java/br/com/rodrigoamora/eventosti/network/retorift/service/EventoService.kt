@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface EventoService {
-    @GET("evento")
+    @GET("api/evento")
     fun listarEventos(@Query("page") page: Int,
                       @Query("size") size: Int): Call<EventoResponse>
 
