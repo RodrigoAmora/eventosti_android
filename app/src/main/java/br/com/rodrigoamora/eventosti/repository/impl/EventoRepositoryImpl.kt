@@ -35,7 +35,7 @@ class EventoRepositoryImpl(
             mediator.value = newResource
         }
 
-        this.getSalonsByUserId(page, size,
+        this.listarEventos(page, size,
             failure = { errorCode ->
                 failuresFromWebApiLiveData.value = Resource(result = null, error = errorCode)
             }
@@ -44,8 +44,8 @@ class EventoRepositoryImpl(
         return this.mediator
     }
 
-    private fun getSalonsByUserId(page: Int, size: Int,
-                                  failure: (errorCode: Int) -> Unit) {
+    private fun listarEventos(page: Int, size: Int,
+                              failure: (errorCode: Int) -> Unit) {
         this.eventoWebClient.listarEventos(page, size,
             completion = { eventos ->
                 salvarNoBanco(eventos)
