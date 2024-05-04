@@ -1,6 +1,5 @@
 package br.com.rodrigoamora.eventosti.repository
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import br.com.rodrigoamora.eventosti.model.Evento
 
