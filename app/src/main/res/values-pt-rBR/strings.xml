@@ -15,8 +15,10 @@
     <!-- ERROR MESSAGES-->
     <string name="error_access_denied">Acesso negado!</string>
     <string name="error_cant_was_possible_perform_operation">Não foi possível realizar a operação.</string>
+    <string name="error_cant_was_possible_find_event">Não foi possível encontrar o evento.</string>
     <string name="error_service_unavailable">Serviço indisponível, por favor tente mais tarde.</string>
 
+    <string name="error_no_events">Sem eventos!</string>
     <string name="error_no_internet">Sem internet!</string>
 
 
