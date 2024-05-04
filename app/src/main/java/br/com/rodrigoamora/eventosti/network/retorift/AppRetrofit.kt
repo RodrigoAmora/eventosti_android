@@ -34,7 +34,7 @@ class AppRetrofit(
     }
 
     // SERVICES
-    fun characterService(): EventoService {
+    fun eventoService(): EventoService {
         return retrofit.create(EventoService::class.java)
     }
 
