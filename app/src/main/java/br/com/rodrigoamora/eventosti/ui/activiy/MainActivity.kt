@@ -1,4 +1,4 @@
-package br.com.rodrigoamora.eventosti
+package br.com.rodrigoamora.eventosti.ui.activiy
 
 import android.os.Bundle
 import android.view.Menu
@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import br.com.rodrigoamora.eventosti.R
 import br.com.rodrigoamora.eventosti.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

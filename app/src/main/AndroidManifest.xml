@@ -20,7 +20,7 @@
 
         <!-- ACTIVITIES -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activiy.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.EventosTI.NoActionBar">
