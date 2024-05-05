@@ -9,11 +9,19 @@ import br.com.rodrigoamora.eventosti.model.Evento
 
 class ListaEventosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    lateinit var tvNameCharacter: TextView
+    lateinit var tvDataIncio: TextView
+    lateinit var tvDataFim: TextView
+    lateinit var tvNomeEvento: TextView
 
     fun setValues(context: Context, evento: Evento) {
-        tvNameCharacter = itemView.findViewById(R.id.tv_nome_evento)
-        tvNameCharacter.text = evento.nome
+        this.tvDataFim = itemView.findViewById(R.id.tv_data_fim_value)
+        this.tvDataFim.text = evento.dataFim
+
+        this.tvDataIncio = itemView.findViewById(R.id.tv_data_inicio_value)
+        this.tvDataIncio.text = evento.dataInicio
+
+        this.tvNomeEvento = itemView.findViewById(R.id.tv_nome_evento)
+        this.tvNomeEvento.text = evento.nome
     }
 
 }

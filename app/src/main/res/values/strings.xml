@@ -21,5 +21,7 @@
     <string name="error_no_internet">No internet!</string>
 
 
+    <string name="tv_data_inicio">Start date</string>
+    <string name="tv_data_fim">End date</string>
     <string name="tv_nome_evento_value">Name event</string>
 </resources>
