@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import br.com.rodrigoamora.eventosti.R
 import br.com.rodrigoamora.eventosti.databinding.FragmentListaEventosBinding
+import br.com.rodrigoamora.eventosti.extension.hide
+import br.com.rodrigoamora.eventosti.extension.show
 import br.com.rodrigoamora.eventosti.model.Evento
 import br.com.rodrigoamora.eventosti.ui.activiy.MainActivity
 import br.com.rodrigoamora.eventosti.ui.recyclerview.adapter.ListaEventosAdapter
@@ -30,6 +33,7 @@ class ListaEventosFramgent: BaseFragment() {
     private lateinit var fabSearchCharacterByName: FloatingActionButton
     private lateinit var recyclerViewCharacters: RecyclerView
 //    private lateinit var searchView: SearchView
+    private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh : SwipeRefreshLayout
 
     private val eventoViewModel: EventoViewModel by viewModel()
@@ -50,7 +54,9 @@ class ListaEventosFramgent: BaseFragment() {
         this._binding = FragmentListaEventosBinding.inflate(inflater, container, false)
         val root: View = this.binding.root
 
-        this.fabSearchCharacterByName = binding.fabBuscarEventos
+        this.progressBar = this.binding.progressBar
+
+        this.fabSearchCharacterByName = this.binding.fabBuscarEventos
         this.fabSearchCharacterByName.setOnClickListener {
 //            if (this.searchView.visibility == View.GONE) {
 //                this.searchView.visibility = View.VISIBLE
@@ -141,8 +147,11 @@ class ListaEventosFramgent: BaseFragment() {
     }
 
     private fun buscarEventos() {
-        this.eventoViewModel.buscarEventos(this.page, 20).observe(this.mainActivity,
+        this.progressBar.show()
+        this.eventoViewModel.buscarEventos(this.page).observe(this.mainActivity,
             Observer { eventos ->
+                this.progressBar.hide()
+
                 eventos.result?.let {
                     populateRecyclerView(it)
                 }

@@ -10,8 +10,8 @@ class EventoViewModel(
     private val eventoRepository: EventoRepository
 ): ViewModel() {
 
-    fun buscarEventos(page: Int, size: Int): LiveData<Resource<List<Evento>?>> {
-        return this.eventoRepository.listarEventos(page, size)
+    fun buscarEventos(page: Int): LiveData<Resource<List<Evento>?>> {
+        return this.eventoRepository.listarEventos(page)
     }
 
 }

@@ -34,9 +34,9 @@ class EventoWebClient(
         })
     }
 
-    fun listarEventos(page: Int, size: Int, completion: (eventos: List<Evento>) -> Unit,
+    fun listarEventos(page: Int, completion: (eventos: List<Evento>) -> Unit,
                       failure: (errorCode: Int) -> Unit) {
-        executeRequest(this.service.listarEventos(page, size),
+        executeRequest(this.service.listarEventos(page),
             completion = { eventoResponse ->
                 eventoResponse?.let { completion(it.eventos) }
             },
