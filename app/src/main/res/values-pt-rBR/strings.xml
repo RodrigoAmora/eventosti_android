@@ -11,6 +11,8 @@
     <string name="action_settings">Configurações</string>
 
     <string name="menu_lista_eventos">Lista Eventos</string>
+    <string name="menu_compartilhar">Compartilhar</string>
+    <string name="menu_sobre">Sobre</string>
 
     <!-- ERROR MESSAGES-->
     <string name="error_access_denied">Acesso negado!</string>

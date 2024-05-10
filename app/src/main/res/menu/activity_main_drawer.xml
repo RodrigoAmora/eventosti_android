@@ -11,4 +11,17 @@
             android:title="@string/menu_lista_eventos" />
     </group>
 
+    <!-- Sub-Menu Communicate -->
+    <group android:id="@+id/grp2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@android:drawable/ic_menu_share"
+            android:title="@string/menu_compartilhar" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="@string/menu_sobre" />
+    </group>
 </menu>
