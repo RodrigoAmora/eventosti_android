@@ -48,6 +48,7 @@ class EventoRepositoryImpl(
                               failure: (errorCode: Int) -> Unit) {
         this.eventoWebClient.listarEventos(page,
             completion = { eventos ->
+                apagarTodosOsEventos()
                 salvarNoBanco(eventos)
             },
             failure = { errorCode ->
@@ -63,6 +64,12 @@ class EventoRepositoryImpl(
     private fun salvarNoBanco(eventos: List<Evento>) {
         CoroutineScope(IO).launch {
             eventoDao.save(eventos)
+        }
+    }
+
+    private fun apagarTodosOsEventos() {
+        CoroutineScope(IO).launch {
+            eventoDao.apagarTodos()
         }
     }
 

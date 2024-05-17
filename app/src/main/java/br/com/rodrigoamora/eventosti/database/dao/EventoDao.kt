@@ -21,6 +21,9 @@ interface EventoDao {
     fun save(eventos: List<Evento>)
 
     @Delete
-    fun remove(evento: Evento)
+    fun apagar(evento: Evento)
+
+    @Query("DELETE FROM Evento")
+    fun apagarTodos()
 
 }
