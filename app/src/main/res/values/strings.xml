@@ -9,8 +9,9 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="menu_lista_eventos">List Events</string>
     <string name="menu_compartilhar">Share</string>
+    <string name="menu_detalhes_evento">Details of Event</string>
+    <string name="menu_lista_eventos">List Events</string>
     <string name="menu_sobre">About</string>
 
     <!-- ERROR MESSAGES-->
