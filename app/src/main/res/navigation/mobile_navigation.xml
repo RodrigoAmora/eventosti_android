@@ -9,6 +9,20 @@
         android:id="@+id/nav_home"
         android:name="br.com.rodrigoamora.eventosti.ui.fragment.ListaEventosFramgent"
         android:label="@string/menu_lista_eventos"
-        tools:layout="@layout/fragment_lista_eventos" />
+        tools:layout="@layout/fragment_lista_eventos" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_detalhes_evento"
+            app:destination="@id/nav_detalhes_evento"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@animator/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_detalhes_evento"
+        android:name="br.com.rodrigoamora.eventosti.ui.fragment.DetalhesEventoFragment"
+        android:label="@string/menu_detalhes_evento"
+        tools:layout="@layout/fragment_detalhes_evento" />
 
 </navigation>

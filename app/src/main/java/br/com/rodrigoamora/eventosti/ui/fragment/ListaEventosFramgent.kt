@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,7 +32,7 @@ class ListaEventosFramgent: BaseFragment() {
     private val binding get() = _binding!!
 
     private lateinit var fabSearchCharacterByName: FloatingActionButton
-    private lateinit var recyclerViewCharacters: RecyclerView
+    private lateinit var recyclerViewEventos: RecyclerView
 //    private lateinit var searchView: SearchView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh : SwipeRefreshLayout
@@ -66,7 +67,7 @@ class ListaEventosFramgent: BaseFragment() {
 //            }
         }
 
-        this.recyclerViewCharacters = this.binding.listCharacters
+        this.recyclerViewEventos = this.binding.listCharacters
 
 //        this.searchView = this.binding.svSearchCharacterByName
 //        this.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -94,7 +95,6 @@ class ListaEventosFramgent: BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.configureRecyclerView()
-        this.configureAdapter()
         this.buscarEventos()
     }
 
@@ -113,15 +113,16 @@ class ListaEventosFramgent: BaseFragment() {
             DividerItemDecoration.VERTICAL)
 
         this.adapter = ListaEventosAdapter(this.mainActivity.applicationContext)
+        this.adapter.whenSelected = this::viewDetails
 
-        this.recyclerViewCharacters.adapter = this.adapter
-        this.recyclerViewCharacters.addItemDecoration(dividerItemDecoration)
-        this.recyclerViewCharacters.setHasFixedSize(true)
-        this.recyclerViewCharacters.itemAnimator = DefaultItemAnimator()
-        this.recyclerViewCharacters.layoutManager = linearLayout
-        this.recyclerViewCharacters.isNestedScrollingEnabled = true
-        this.recyclerViewCharacters.scrollToPosition(adapter.itemCount - 1)
-        this.recyclerViewCharacters.addOnScrollListener(object : RecyclerViewPaginateListener(linearLayout) {
+        this.recyclerViewEventos.adapter = this.adapter
+        this.recyclerViewEventos.addItemDecoration(dividerItemDecoration)
+        this.recyclerViewEventos.setHasFixedSize(true)
+        this.recyclerViewEventos.itemAnimator = DefaultItemAnimator()
+        this.recyclerViewEventos.layoutManager = linearLayout
+        this.recyclerViewEventos.isNestedScrollingEnabled = true
+        this.recyclerViewEventos.scrollToPosition(adapter.itemCount - 1)
+        this.recyclerViewEventos.addOnScrollListener(object : RecyclerViewPaginateListener(linearLayout) {
             override fun onLoadMore(currentPage: Int) {
                 if (eventos.size >= 20) {
                     page += 1
@@ -129,10 +130,6 @@ class ListaEventosFramgent: BaseFragment() {
                 }
             }
         })
-    }
-
-    private fun configureAdapter() {
-        this.adapter.whenSelected = this::viewDetails
     }
 
     private fun populateRecyclerView(eventos: List<Evento>) {
@@ -166,10 +163,11 @@ class ListaEventosFramgent: BaseFragment() {
 
     @SuppressLint("ResourceType")
     private fun viewDetails(evento: Evento) {
-//        val eventoBundle = Bundle()
-//        characterBundle.putSerializable("evento", evento)
-//        Navigation.findNavController(this.recyclerViewCharacters)
-//            .navigate(R.id.action_nav_list_characters_to_nav_character, eventoBundle)
+        val eventoBundle = Bundle()
+        eventoBundle.putSerializable("evento", evento)
+
+        Navigation.findNavController(this.recyclerViewEventos)
+                  .navigate(R.id.action_nav_home_to_nav_detalhes_evento, eventoBundle)
     }
 
 }
