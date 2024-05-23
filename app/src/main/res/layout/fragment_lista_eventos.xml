@@ -59,6 +59,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_search" />
+        app:srcCompat="@android:drawable/ic_menu_search"
+        app:layout_behavior="br.com.rodrigoamora.eventosti.ui.behavior.FABScrollBehavior" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
