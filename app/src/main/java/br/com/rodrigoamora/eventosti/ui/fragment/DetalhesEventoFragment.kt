@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.rodrigoamora.eventosti.databinding.FragmentDetalhesEventoBinding
-import br.com.rodrigoamora.eventosti.databinding.FragmentListaEventosBinding
 
 class DetalhesEventoFragment: BaseFragment() {
 
