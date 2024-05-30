@@ -4,12 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import br.com.rodrigoamora.eventosti.BuildConfig
 import br.com.rodrigoamora.eventosti.databinding.FragmentDetalhesEventoBinding
+import br.com.rodrigoamora.eventosti.model.Evento
+import br.com.rodrigoamora.eventosti.ui.activiy.MainActivity
+import br.com.rodrigoamora.eventosti.util.ShareUtil
 
 class DetalhesEventoFragment: BaseFragment() {
 
     private var _binding: FragmentDetalhesEventoBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var tvNomeEvento: TextView
+    private lateinit var tvDataEvento: TextView
+    private lateinit var tvDescricaoEvento: TextView
+    private lateinit var tvSiteEvento: TextView
+    private lateinit var ivShare: ImageView
+
+    private val mainActivity: MainActivity by lazy {
+        activity as MainActivity
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,9 +34,33 @@ class DetalhesEventoFragment: BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         this._binding = FragmentDetalhesEventoBinding.inflate(inflater, container, false)
-        val root: View = this.binding.root
-
-        return root
+        return this.binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        this.initViews()
+    }
+
+    private fun initViews() {
+        val evento = arguments?.getSerializable("evento") as Evento
+
+        this.tvNomeEvento = this.binding.tvNomeEvento
+        this.tvNomeEvento.text = evento.nome
+
+        this.tvDataEvento = this.binding.tvData
+        this.tvDataEvento.text = evento.dataFim+" - "+evento.dataFim
+
+        this.tvDescricaoEvento = this.binding.tvDescricao
+        this.tvDescricaoEvento.text = evento.descricao
+
+        this.tvSiteEvento = this.binding.tvSite
+        this.tvSiteEvento.text = evento.site
+
+        this.ivShare = this.binding.ivShare
+        this.ivShare.setOnClickListener {
+            val texto = BuildConfig.BASE_URL_API+"/verEvento?id="+evento.id
+            ShareUtil.directShare(this.mainActivity, evento.nome, texto)
+        }
+    }
 }
