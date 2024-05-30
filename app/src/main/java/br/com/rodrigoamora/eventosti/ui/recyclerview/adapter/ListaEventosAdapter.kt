@@ -26,7 +26,7 @@ class ListaEventosAdapter(
     override fun onBindViewHolder(holder: ListaEventosViewHolder, position: Int) {
         val evento = this.eventos[position]
 
-        holder.setValues(context, evento)
+        holder.setValues(evento)
         holder.itemView.setOnClickListener {
             whenSelected(evento)
         }

@@ -1,6 +1,5 @@
 package br.com.rodrigoamora.eventosti.ui.recyclerview.viewholder
 
-import android.content.Context
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,7 @@ class ListaEventosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     lateinit var tvDataFim: TextView
     lateinit var tvNomeEvento: TextView
 
-    fun setValues(context: Context, evento: Evento) {
+    fun setValues(evento: Evento) {
         this.tvDataFim = itemView.findViewById(R.id.tv_data_fim_value)
         this.tvDataFim.text = evento.dataFim
 
