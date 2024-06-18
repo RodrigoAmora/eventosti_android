@@ -144,21 +144,24 @@ class ListaEventosFramgent: BaseFragment() {
     }
 
     private fun buscarEventos() {
-        this.progressBar.show()
-        this.eventoViewModel.buscarEventos(this.page).observe(this.mainActivity,
-            Observer { eventos ->
-                this.progressBar.hide()
+        if (NetworkUtil.checkConnection(this.mainActivity)) {
+            this.progressBar.show()
+            this.eventoViewModel.buscarEventos(this.page).observe(this.mainActivity,
+                Observer { eventos ->
+                    this.progressBar.hide()
 
-                eventos.result?.let {
-                    populateRecyclerView(it)
+                    eventos.result?.let {
+                        populateRecyclerView(it)
+                    }
+                    eventos.error?.let { showError(mainActivity, it) }
                 }
-                eventos.error?.let { showError(mainActivity, it) }
-
-                if (!NetworkUtil.checkConnection(mainActivity)) {
-                    showToast(mainActivity, getString(R.string.error_no_internet))
-                }
+            )
+        } else {
+            this.eventoViewModel.buscarEventosDoBancoDeDados().value?.let {
+                this.populateRecyclerView(it)
             }
-        )
+            this.showToast(this.mainActivity, getString(R.string.error_no_internet))
+        }
     }
 
     @SuppressLint("ResourceType")
