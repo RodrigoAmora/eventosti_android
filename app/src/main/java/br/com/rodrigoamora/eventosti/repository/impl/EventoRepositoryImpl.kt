@@ -19,8 +19,8 @@ class EventoRepositoryImpl(
 
     private val mediator = MediatorLiveData<Resource<List<Evento>?>>()
 
-    override fun listarEventos(page: Int): MediatorLiveData<Resource<List<Evento>?>> {
-        this.mediator.addSource(this.listarEventosDoBanco()) { eventos ->
+    override fun buscarEventosDoBancoDeDadosNaAPI(page: Int): MediatorLiveData<Resource<List<Evento>?>> {
+        this.mediator.addSource(this.buscarEventosDoBancoDeDados()) { eventos ->
             mediator.value = Resource(eventos)
         }
 
@@ -44,6 +44,8 @@ class EventoRepositoryImpl(
         return this.mediator
     }
 
+    override fun buscarEventosDoBancoDeDados(): LiveData<List<Evento>> = this.eventoDao.listarTodos()
+
     private fun listarEventos(page: Int,
                               failure: (errorCode: Int) -> Unit) {
         this.eventoWebClient.listarEventos(page,
@@ -55,10 +57,6 @@ class EventoRepositoryImpl(
                 errorCode?.let { failure(it) }
             }
         )
-    }
-
-    private fun listarEventosDoBanco(): LiveData<List<Evento>> {
-        return eventoDao.listarTodos()
     }
 
     private fun salvarNoBanco(eventos: List<Evento>) {
