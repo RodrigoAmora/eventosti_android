@@ -1,7 +1,6 @@
 package br.com.rodrigoamora.eventosti.network.retorift.webclient
 
 import br.com.rodrigoamora.eventosti.model.Evento
-import br.com.rodrigoamora.eventosti.network.reponse.EventoResponse
 import br.com.rodrigoamora.eventosti.network.retorift.service.EventoService
 import retrofit2.Call
 import retrofit2.Callback
