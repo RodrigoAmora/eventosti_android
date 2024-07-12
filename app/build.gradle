@@ -34,7 +34,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             buildConfigField "String", "DATABASE_NAME", "\"eventosti_database.db\""
-            buildConfigField "String", "BASE_URL_API", "\"http://192.168.0.71:8080/\""
+            buildConfigField "String", "BASE_URL_API", "\"http://eventosti.com.br/\""
         }
     }
     compileOptions {
@@ -97,7 +97,10 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
 
     ///// LIBS FOR TEST /////
+    // jUnit
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Espresso
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }
