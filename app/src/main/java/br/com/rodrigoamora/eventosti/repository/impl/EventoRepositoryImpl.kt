@@ -26,13 +26,13 @@ class EventoRepositoryImpl(
 
         val failuresFromWebApiLiveData = MutableLiveData<Resource<List<Evento>?>>()
         this.mediator.addSource(failuresFromWebApiLiveData) { resourceOfFailure ->
-            val currentResource = mediator.value
-            val newResource: Resource<List<Evento>?> = if(currentResource != null){
+            val currentResource = this.mediator.value
+            val newResource: Resource<List<Evento>?> = if (currentResource != null) {
                 Resource(result = currentResource.result)
             } else {
                 resourceOfFailure
             }
-            mediator.value = newResource
+            this.mediator.value = newResource
         }
 
         this.listarEventos(page,
@@ -44,20 +44,24 @@ class EventoRepositoryImpl(
         return this.mediator
     }
 
-    override fun buscarEventosDoBancoDeDados(): LiveData<List<Evento>> = this.eventoDao.listarTodos()
-
     private fun listarEventos(page: Int,
                               failure: (errorCode: Int) -> Unit) {
         this.eventoWebClient.listarEventos(page,
             completion = { eventos ->
-                apagarTodosOsEventos()
-                salvarNoBanco(eventos)
+                eventos?.let {
+                    apagarTodosOsEventos()
+                    salvarNoBanco(it)
+                }
             },
             failure = { errorCode ->
-                errorCode?.let { failure(it) }
+                errorCode?.let {
+                    failure(it)
+                }
             }
         )
     }
+
+    override fun buscarEventosDoBancoDeDados(): LiveData<List<Evento>> = this.eventoDao.listarTodos()
 
     private fun salvarNoBanco(eventos: List<Evento>) {
         CoroutineScope(IO).launch {
