@@ -26,6 +26,9 @@ data class Evento (
     var dataInicio: String,
 
     @SerializedName("dataFim")
-    var dataFim: String
+    var dataFim: String,
+
+    @SerializedName("tipoEvento")
+    var tipoEvento: String
 
 ): Serializable

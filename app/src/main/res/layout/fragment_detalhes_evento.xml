@@ -18,8 +18,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_data"
+        android:id="@+id/tv_date"
         android:text="@string/tv_data_inicio"
+        android:textColor="@color/black"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,17 +33,19 @@
     <TextView
         android:id="@+id/tv_descricao"
         android:text="@string/tv_data_inicio"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_top"
         android:layout_marginEnd="@dimen/margin_end"
         android:layout_marginStart="@dimen/margin_start"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_data" />
+        app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
     <TextView
-        android:id="@+id/tv_site"
+        android:id="@+id/tv_tipo_evento"
         android:text="@string/tv_data_inicio"
+        android:textColor="@color/black"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,6 +54,31 @@
         android:layout_marginStart="@dimen/margin_start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_descricao" />
+
+    <TextView
+        android:id="@+id/tv_site"
+        android:text="@string/tv_data_inicio"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_tipo_evento" />
+
+    <LinearLayout
+        android:id="@+id/divider"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_site" />
 
     <ImageView
         android:id="@+id/iv_share"

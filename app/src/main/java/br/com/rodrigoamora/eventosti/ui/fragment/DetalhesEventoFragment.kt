@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import br.com.rodrigoamora.eventosti.BuildConfig
+import br.com.rodrigoamora.eventosti.R
 import br.com.rodrigoamora.eventosti.databinding.FragmentDetalhesEventoBinding
 import br.com.rodrigoamora.eventosti.model.Evento
 import br.com.rodrigoamora.eventosti.ui.activiy.MainActivity
@@ -22,6 +23,7 @@ class DetalhesEventoFragment: BaseFragment() {
     private lateinit var tvDataEvento: TextView
     private lateinit var tvDescricaoEvento: TextView
     private lateinit var tvSiteEvento: TextView
+    private lateinit var tvTipoEvento: TextView
     private lateinit var ivShare: ImageView
 
     private val mainActivity: MainActivity by lazy {
@@ -44,18 +46,26 @@ class DetalhesEventoFragment: BaseFragment() {
 
     private fun initViews() {
         val evento = arguments?.getSerializable("evento") as Evento
+        val dataEvento = evento.dataFim+" - "+evento.dataFim
 
         this.tvNomeEvento = this.binding.tvNomeEvento
         this.tvNomeEvento.text = evento.nome
 
-        this.tvDataEvento = this.binding.tvData
-        this.tvDataEvento.text = evento.dataFim+" - "+evento.dataFim
+        this.tvDataEvento = this.binding.tvDate
+        this.tvDataEvento.text = dataEvento
 
         this.tvDescricaoEvento = this.binding.tvDescricao
-        this.tvDescricaoEvento.text = evento.descricao
+        if (evento.descricao.isNullOrEmpty()) {
+            this.tvDescricaoEvento.visibility = View.GONE
+        } else {
+            this.tvDescricaoEvento.text = evento.descricao
+        }
 
         this.tvSiteEvento = this.binding.tvSite
         this.tvSiteEvento.text = evento.site
+
+        this.tvTipoEvento = this.binding.tvTipoEvento
+        this.tvTipoEvento.text = getString(R.string.tv_tipo_evento, evento.tipoEvento)
 
         this.ivShare = this.binding.ivShare
         this.ivShare.setOnClickListener {
