@@ -153,7 +153,9 @@ class ListaEventosFramgent: BaseFragment() {
                     eventos.result?.let {
                         populateRecyclerView(it)
                     }
-                    eventos.error?.let { showError(mainActivity, it) }
+                    eventos.error?.let {
+                        showError(mainActivity, it)
+                    }
                 }
             )
         } else {
