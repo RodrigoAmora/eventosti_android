@@ -3,6 +3,7 @@ package br.com.rodrigoamora.eventosti.di
 import androidx.room.Room
 import br.com.rodrigoamora.eventosti.BuildConfig
 import br.com.rodrigoamora.eventosti.database.AppRoomDatabase
+import br.com.rodrigoamora.eventosti.database.migration.MIGRATION_1_2
 import br.com.rodrigoamora.eventosti.network.retorift.AppRetrofit
 import br.com.rodrigoamora.eventosti.network.retorift.webclient.EventoWebClient
 import br.com.rodrigoamora.eventosti.repository.EventoRepository
@@ -33,6 +34,7 @@ val databaseModule = module {
             get(),
             AppRoomDatabase::class.java,
             BuildConfig.DATABASE_NAME)
+            .addMigrations(MIGRATION_1_2)
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
