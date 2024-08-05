@@ -3,7 +3,7 @@ Descrição:
 ----------
 App que exibe eventos de TI.
 
-O projeto roda a partir do Android 8.0 (API Level 26), usa a arquitetura MVVM, Injeção de Dependências, Persistência dos dados off-line, Teste de Integração e Teste de UI.
+O projeto roda a partir do Android 8.0 (API Level 26), usa a arquitetura MVVM, Injeção de Dependências e Persistência de dados off-line.
 
 Dependências:
 -------------
@@ -34,4 +34,3 @@ Autor:
 LinkedIn: https://linkedin.com/in/rodrigoamora <br>
 E-mail: rodrigo.amora.freitas@gmail.com
 
-<hr>
