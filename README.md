@@ -1,8 +1,7 @@
 # eventosti_android
 Descrição:
 ----------
-App que exibe eventos de TI.
-
+Projeto que exibe eventos de TI.<br>
 O projeto roda a partir do Android 8.0 (API Level 26), usa a arquitetura MVVM, Injeção de Dependências e Persistência de dados off-line.
 
 Dependências:
