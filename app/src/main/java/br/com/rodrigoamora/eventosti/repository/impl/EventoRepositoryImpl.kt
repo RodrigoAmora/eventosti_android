@@ -37,7 +37,8 @@ class EventoRepositoryImpl(
 
         this.listarEventos(page,
             failure = { errorCode ->
-                failuresFromWebApiLiveData.value = Resource(result = null, error = errorCode)
+                val currentResource = mediator.value
+                failuresFromWebApiLiveData.value = Resource(result = currentResource?.result, error = errorCode)
             }
         )
 
@@ -49,7 +50,6 @@ class EventoRepositoryImpl(
         this.eventoWebClient.listarEventos(page,
             completion = { eventos ->
                 eventos?.let {
-                    apagarTodosOsEventos()
                     salvarNoBanco(it)
                 }
             },
