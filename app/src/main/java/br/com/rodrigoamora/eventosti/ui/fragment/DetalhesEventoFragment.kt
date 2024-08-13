@@ -46,7 +46,7 @@ class DetalhesEventoFragment: BaseFragment() {
 
     private fun initViews() {
         val evento = arguments?.getSerializable("evento") as Evento
-        val dataEvento = evento.dataFim+" - "+evento.dataFim
+        val dataEvento = evento.formatarData()
 
         this.tvNomeEvento = this.binding.tvNomeEvento
         this.tvNomeEvento.text = evento.nome
