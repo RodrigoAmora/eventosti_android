@@ -25,6 +25,7 @@
     <string name="error_no_internet">Sem internet!</string>
 
     <!-- EVENTO -->
+    <string name="tv_data">Data:</string>
     <string name="tv_data_inicio">Data início</string>
     <string name="tv_data_fim">Data fime</string>
     <string name="tv_nome_evento_value">Nome evento</string>
