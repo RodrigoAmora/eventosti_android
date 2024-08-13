@@ -32,3 +32,11 @@ data class Evento (
     var tipoEvento: String
 
 ): Serializable
+{
+    fun formatarData(): String {
+        if (dataInicio.equals(dataFim)) {
+            return dataInicio
+        }
+        return dataInicio+" - "+dataFim
+    }
+}
