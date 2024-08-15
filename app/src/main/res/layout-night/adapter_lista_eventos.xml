@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_nome_evento" />
 
     <TextView
-        android:id="@+id/tv_data_fim"
+        android:id="@+id/tv_data_inicio_value"
         android:text="@string/tv_data"
         android:textColor="@color/white"
         android:gravity="center_horizontal"
