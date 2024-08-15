@@ -80,15 +80,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_site" />
 
-    <ImageView
-        android:id="@+id/iv_share"
-        android:src="@android:drawable/ic_menu_share"
-        android:gravity="center_horizontal"
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_marginEnd="@dimen/margin_end"
-        android:layout_marginStart="@dimen/margin_start"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_site" />
 </androidx.constraintlayout.widget.ConstraintLayout>
