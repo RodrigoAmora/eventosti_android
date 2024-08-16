@@ -17,16 +17,24 @@
     <!-- ERROR MESSAGES-->
     <string name="error_access_denied">Access denied!</string>
     <string name="error_cant_was_possible_perform_operation">Can\'t was possible perform operation.</string>
-    <string name="error_cant_was_possible_find_event">Can\'t was possible the event.</string>
+    <string name="error_cant_was_possible_find_event">Event not found.</string>
     <string name="error_service_unavailable">Service unavailable, please try later.</string>
 
     <string name="error_no_events">No events!</string>
     <string name="error_no_internet">No internet!</string>
 
     <!-- EVENTO -->
+    <string name="sv_buscar_evento_por_nome">Search event by name:</string>
     <string name="tv_data">Date:</string>
     <string name="tv_data_inicio">Start date</string>
     <string name="tv_data_fim">End date</string>
     <string name="tv_nome_evento_value">Name event</string>
     <string name="tv_tipo_evento">Tipo do evento:\n %s</string>
+
+    <!-- SOBRE -->
+    <string name="site">Site: %s</string>
+    <string name="versao">Version: %s</string>
+    <string name="criado_por">Created by Rodrigo Amora</string>
+    <string name="email_autor">rodrigo.amora.freitas@gmail.com</string>
+    <string name="site_autor">www.rodrigoamora.com.br</string>
 </resources>

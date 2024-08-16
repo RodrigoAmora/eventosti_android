@@ -4,12 +4,16 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- NAVIGATION-VIEW -->
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
+    <!-- ACTION -->
     <string name="action_settings">Configurações</string>
 
+    <!-- MENU -->
     <string name="menu_compartilhar">Compartilhar</string>
     <string name="menu_detalhes_evento">Detahles do Evento</string>
     <string name="menu_lista_eventos">Lista Eventos</string>
@@ -18,16 +22,24 @@
     <!-- ERROR MESSAGES-->
     <string name="error_access_denied">Acesso negado!</string>
     <string name="error_cant_was_possible_perform_operation">Não foi possível realizar a operação.</string>
-    <string name="error_cant_was_possible_find_event">Não foi possível encontrar o evento.</string>
+    <string name="error_cant_was_possible_find_event">Evento não ecnontrado.</string>
     <string name="error_service_unavailable">Serviço indisponível, por favor tente mais tarde.</string>
 
     <string name="error_no_events">Sem eventos!</string>
     <string name="error_no_internet">Sem internet!</string>
 
     <!-- EVENTO -->
+    <string name="sv_buscar_evento_por_nome">Buscar evento por nomne:</string>
     <string name="tv_data">Data:</string>
     <string name="tv_data_inicio">Data início</string>
     <string name="tv_data_fim">Data fime</string>
     <string name="tv_nome_evento_value">Nome evento</string>
     <string name="tv_tipo_evento">Tipo do evento:\n %s</string>
+
+    <!-- SOBRE -->
+    <string name="site">Site: %s</string>
+    <string name="versao">Versão: %s</string>
+    <string name="criado_por">Criado por Rodrigo Amora</string>
+    <string name="email_autor">rodrigo.amora.freitas@gmail.com</string>
+    <string name="site_autor">www.rodrigoamora.com.br</string>
 </resources>
