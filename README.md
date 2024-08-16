@@ -33,3 +33,6 @@ Autor:
 LinkedIn: https://linkedin.com/in/rodrigoamora <br>
 E-mail: rodrigo.amora.freitas@gmail.com
 
+Acesso ao projeto:
+------------------
+Disponível em: https://play.google.com/store/apps/details?id=br.com.rodrigoamora.eventosti
