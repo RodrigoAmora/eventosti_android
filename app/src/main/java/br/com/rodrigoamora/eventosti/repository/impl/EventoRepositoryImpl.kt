@@ -61,10 +61,41 @@ class EventoRepositoryImpl(
         )
     }
 
+    override fun buscarEventosPorNomeNaAPI(nome: String,
+                                           page: Int): MediatorLiveData<Resource<List<Evento>?>> {
+        this.buscarEventosPorNome(nome, page,
+            completion = {
+                mediator.value = Resource(result = it)
+            },
+            failure = {
+                mediator.value = Resource(result = null, error = it)
+            }
+        )
+        return mediator
+    }
+
+    private fun buscarEventosPorNome(nome: String,
+                                     page: Int,
+                                     completion: (eventos: List<Evento>) -> Unit,
+                                     failure: (errorCode: Int) -> Unit) {
+        this.eventoWebClient.buscarEventosPorNome(nome, page,
+            completion = { eventos ->
+                mediator.value = Resource(result = eventos)
+//                completion(eventos)
+            },
+            failure = { errorCode ->
+                errorCode?.let {
+                    failure(it)
+                }
+            }
+        )
+    }
+
     override fun buscarEventosDoBancoDeDados(): LiveData<List<Evento>> = this.eventoDao.listarTodos()
 
     private fun salvarNoBanco(eventos: List<Evento>) {
         CoroutineScope(IO).launch {
+            eventoDao.apagarTodos()
             eventoDao.save(eventos)
         }
     }

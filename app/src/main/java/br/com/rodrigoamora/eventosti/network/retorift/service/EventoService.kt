@@ -9,4 +9,7 @@ interface EventoService {
     @GET("api/evento")
     fun listarEventos(@Query("page") page: Int): Call<EventoResponse>
 
+    @GET("api/evento/buscarPorNome")
+    fun buscarEventosPorNome(@Query("nome") nome: String,
+                             @Query("page") page: Int): Call<EventoResponse>
 }

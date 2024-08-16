@@ -5,6 +5,8 @@ import br.com.rodrigoamora.eventosti.network.retorift.service.EventoService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.ArrayList
+import java.util.Collections.list
 
 class EventoWebClient(
     private val service: EventoService
@@ -40,6 +42,23 @@ class EventoWebClient(
                 eventoResponse?.let { completion(it.eventos) }
             },
             failure = { errorCode ->  failure(errorCode) }
+        )
+    }
+
+    fun buscarEventosPorNome(nome: String,
+                             page: Int,
+                             completion: (eventos: List<Evento>) -> Unit,
+                             failure: (errorCode: Int) -> Unit) {
+        executeRequest(this.service.buscarEventosPorNome(nome, page),
+            completion = { eventoResponse ->
+                eventoResponse?.let { completion(it.eventos) }
+            },
+            failure = { errorCode ->
+                if (errorCode == 404) {
+                    completion(ArrayList<Evento>())
+                }
+                failure(errorCode)
+            }
         )
     }
 

@@ -14,6 +14,11 @@ class EventoViewModel(
         return this.eventoRepository.buscarEventosDoBancoDeDadosNaAPI(page)
     }
 
+    fun buscarEventosPorNome(nome: String,
+                             page: Int): LiveData<Resource<List<Evento>?>> {
+        return this.eventoRepository.buscarEventosPorNomeNaAPI(nome, page)
+    }
+
     fun buscarEventosDoBancoDeDados(): LiveData<List<Evento>> {
         return this.eventoRepository.buscarEventosDoBancoDeDados()
     }

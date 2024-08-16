@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -33,7 +34,7 @@ class ListaEventosFramgent: BaseFragment() {
 
     private lateinit var fabSearchCharacterByName: FloatingActionButton
     private lateinit var recyclerViewEventos: RecyclerView
-//    private lateinit var searchView: SearchView
+    private lateinit var searchView: SearchView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh : SwipeRefreshLayout
 
@@ -59,29 +60,29 @@ class ListaEventosFramgent: BaseFragment() {
 
         this.fabSearchCharacterByName = this.binding.fabBuscarEventos
         this.fabSearchCharacterByName.setOnClickListener {
-//            if (this.searchView.visibility == View.GONE) {
-//                this.searchView.visibility = View.VISIBLE
-//                this.searchView.requestFocus()
-//            } else {
-//                this.searchView.visibility = View.GONE
-//            }
+            if (this.searchView.visibility == View.GONE) {
+                this.searchView.visibility = View.VISIBLE
+                this.searchView.requestFocus()
+            } else {
+                this.searchView.visibility = View.GONE
+            }
         }
 
         this.recyclerViewEventos = this.binding.listCharacters
 
-//        this.searchView = this.binding.svSearchCharacterByName
-//        this.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                query?.let {
-//                    getCharacterByName(it.trim())
-//                }
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                return false
-//            }
-//        })
+        this.searchView = this.binding.svEvento
+        this.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    buscarEventoPorNome(it.replace(" ", "%20").trim())
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
 
         this.swipeRefresh = this.binding.swipeRefresh
         this.swipeRefresh.setOnRefreshListener {
@@ -138,20 +139,21 @@ class ListaEventosFramgent: BaseFragment() {
     }
 
     private fun replaceRecyclerView(eventos: List<Evento>) {
+        this.progressBar.hide()
         this.eventos = eventos
-//        this.searchView.visibility = View.GONE
+        this.searchView.visibility = View.GONE
         this.adapter.replaceAll(eventos)
     }
 
     private fun buscarEventos() {
         if (NetworkUtil.checkConnection(this.mainActivity)) {
             this.progressBar.show()
-            this.eventoViewModel.buscarEventos(this.page).observe(this.mainActivity,
+            this.eventoViewModel.buscarEventos(this.page).observe(this,
                 Observer { eventos ->
                     this.progressBar.hide()
 
                     eventos.result?.let {
-                        populateRecyclerView(it)
+                        replaceRecyclerView(it)
                     }
                     eventos.error?.let {
                         showError(mainActivity, it)
@@ -160,8 +162,27 @@ class ListaEventosFramgent: BaseFragment() {
             )
         } else {
             this.eventoViewModel.buscarEventosDoBancoDeDados().value?.let {
+                this.progressBar.hide()
                 this.populateRecyclerView(it)
             }
+            this.showToast(this.mainActivity, getString(R.string.error_no_internet))
+        }
+    }
+
+    private fun buscarEventoPorNome(nome: String) {
+        if (NetworkUtil.checkConnection(this.mainActivity)) {
+            this.progressBar.show()
+            this.eventoViewModel.buscarEventosPorNome(nome, page).observe(this,
+                Observer { eventos ->
+                    eventos.result?.let {
+                        replaceRecyclerView(it)
+                    }
+                    eventos.error?.let {
+                        showError(mainActivity, it)
+                    }
+                }
+            )
+        } else {
             this.showToast(this.mainActivity, getString(R.string.error_no_internet))
         }
     }
