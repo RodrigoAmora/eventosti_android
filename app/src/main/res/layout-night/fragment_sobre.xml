@@ -8,7 +8,6 @@
     <TextView
         android:id="@+id/tv_versao"
         android:text="@string/versao"
-        android:textColor="@color/white"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +20,6 @@
     <TextView
         android:id="@+id/tv_site_app"
         android:text="@string/site"
-        android:textColor="@color/white"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +45,6 @@
     <TextView
         android:id="@+id/tv_cirado_por"
         android:text="@string/criado_por"
-        android:textColor="@color/white"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,7 +57,6 @@
     <TextView
         android:id="@+id/tv_email_autor"
         android:text="@string/email_autor"
-        android:textColor="@color/white"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,7 +69,6 @@
     <TextView
         android:id="@+id/tv_site_autor"
         android:text="@string/site_autor"
-        android:textColor="@color/white"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
