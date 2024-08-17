@@ -13,6 +13,7 @@ import br.com.rodrigoamora.eventosti.R
 import br.com.rodrigoamora.eventosti.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         this.appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_share, R.id.nav_about
+                R.id.nav_home, R.id.nav_sobre
             ), drawerLayout
         )
 
@@ -52,5 +53,5 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
+    
 }
