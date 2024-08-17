@@ -32,9 +32,9 @@
     <string name="tv_tipo_evento">Tipo do evento:\n %s</string>
 
     <!-- SOBRE -->
-    <string name="site">Site: %s</string>
+    <string name="site">Site: http://evwntosti.com.br</string>
     <string name="versao">Version: %s</string>
     <string name="criado_por">Created by Rodrigo Amora</string>
     <string name="email_autor">rodrigo.amora.freitas@gmail.com</string>
-    <string name="site_autor">www.rodrigoamora.com.br</string>
+    <string name="site_autor">http://rodrigoamora.com.br</string>
 </resources>

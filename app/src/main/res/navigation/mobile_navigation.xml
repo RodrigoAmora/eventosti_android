@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="br.com.rodrigoamora.eventosti.ui.fragment.ListaEventosFramgent"
-        android:label="@string/menu_lista_eventos"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_lista_eventos" >
         <action
             android:id="@+id/action_nav_home_to_nav_detalhes_evento"
@@ -22,7 +22,13 @@
     <fragment
         android:id="@+id/nav_detalhes_evento"
         android:name="br.com.rodrigoamora.eventosti.ui.fragment.DetalhesEventoFragment"
-        android:label="@string/menu_detalhes_evento"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_detalhes_evento" />
+
+    <fragment
+        android:id="@+id/nav_sobre"
+        android:name="br.com.rodrigoamora.eventosti.ui.fragment.SobreFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_sobre" />
 
 </navigation>
