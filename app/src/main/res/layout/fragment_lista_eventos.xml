@@ -22,24 +22,24 @@
         app:layout_constraintTop_toTopOf="parent"
         style="?android:attr/progressBarStyleLarge" />
 
-<!--
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_search_character_by_name"
+        android:id="@+id/sv_evento"
         android:iconifiedByDefault="false"
         android:padding="4dp"
-        android:queryHint="@string/search_character_by_name"
+        android:queryHint="@string/sv_buscar_evento_por_nome"
         android:visibility="gone"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
--->
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sv_evento">>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_characters"
             app:layout_constraintBottom_toBottomOf="parent"
