@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         style="?android:attr/progressBarStyleLarge" />
 
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/sv_evento"
         android:iconifiedByDefault="false"
         android:padding="4dp"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sv_evento">>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_characters"
+            android:id="@+id/list_events"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +49,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/no_result"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sv_evento">
+        <ImageView
+            android:src="@drawable/ic_list_empty_light"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:text="@string/error_cant_was_possible_find_event"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabBuscarEventos"
