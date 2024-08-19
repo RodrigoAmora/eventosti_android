@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.ProgressBar
-import androidx.appcompat.widget.SearchView
+import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -37,6 +38,7 @@ class ListaEventosFramgent: BaseFragment() {
     private lateinit var searchView: SearchView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh : SwipeRefreshLayout
+    private lateinit var semResultado: LinearLayout
 
     private val eventoViewModel: EventoViewModel by viewModel()
 
@@ -68,7 +70,7 @@ class ListaEventosFramgent: BaseFragment() {
             }
         }
 
-        this.recyclerViewEventos = this.binding.listCharacters
+        this.recyclerViewEventos = this.binding.listEvents
 
         this.searchView = this.binding.svEvento
         this.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -89,6 +91,8 @@ class ListaEventosFramgent: BaseFragment() {
             this.buscarEventos()
             this.swipeRefresh.isRefreshing = false
         }
+
+        this.semResultado = this.binding.noResult
 
         return root
     }
@@ -134,32 +138,60 @@ class ListaEventosFramgent: BaseFragment() {
     }
 
     private fun populateRecyclerView(eventos: List<Evento>) {
-        this.eventos = eventos
-        this.adapter.update(eventos)
+        this.progressBar.hide()
+        this.searchView.hide()
+
+        if (eventos.isEmpty()) {
+            this.swipeRefresh.visibility = View.GONE
+            this.semResultado.visibility = View.VISIBLE
+        } else {
+            this.swipeRefresh.visibility = View.VISIBLE
+            this.semResultado.visibility = View.GONE
+
+            this.eventos = eventos
+            this.adapter.update(eventos)
+        }
     }
 
     private fun replaceRecyclerView(eventos: List<Evento>) {
         this.progressBar.hide()
-        this.eventos = eventos
-        this.searchView.visibility = View.GONE
-        this.adapter.replaceAll(eventos)
+        this.searchView.hide()
+
+        if (eventos.isEmpty()) {
+            this.swipeRefresh.visibility = View.GONE
+            this.semResultado.visibility = View.VISIBLE
+        } else {
+            this.swipeRefresh.visibility = View.VISIBLE
+            this.semResultado.visibility = View.GONE
+
+            this.eventos = eventos
+            this.adapter.replaceAll(eventos)
+        }
     }
 
     private fun buscarEventos() {
         if (NetworkUtil.checkConnection(this.mainActivity)) {
-            this.progressBar.show()
-            this.eventoViewModel.buscarEventos(this.page).observe(this,
-                Observer { eventos ->
-                    this.progressBar.hide()
+            var error: Int = -1
 
-                    eventos.result?.let {
-                        replaceRecyclerView(it)
+            this.progressBar.show()
+            this.eventoViewModel.buscarEventos(this.page)
+                .observe(this.mainActivity,
+                    Observer { eventos ->
+                        this.progressBar.hide()
+
+                        eventos.result?.let {
+                            replaceRecyclerView(it)
+                        }
+
+                        eventos.error?.let {
+                            error = it
+                        }
                     }
-                    eventos.error?.let {
-                        showError(mainActivity, it)
-                    }
-                }
-            )
+                )
+
+            if (error > -1) {
+                showError(mainActivity, error)
+            }
         } else {
             this.eventoViewModel.buscarEventosDoBancoDeDados().value?.let {
                 this.progressBar.hide()
@@ -171,17 +203,26 @@ class ListaEventosFramgent: BaseFragment() {
 
     private fun buscarEventoPorNome(nome: String) {
         if (NetworkUtil.checkConnection(this.mainActivity)) {
+            var error: Int = -1
+
             this.progressBar.show()
-            this.eventoViewModel.buscarEventosPorNome(nome, page).observe(this,
-                Observer { eventos ->
-                    eventos.result?.let {
-                        replaceRecyclerView(it)
+            this.eventoViewModel.buscarEventosPorNome(nome, page)
+                .observe(this.mainActivity,
+                    Observer { eventos ->
+                        eventos.result?.let {
+                            replaceRecyclerView(it)
+                        }
+                        if (eventos.error != null) {
+                            eventos.error?.let {
+                                error = it
+                            }
+                        }
                     }
-                    eventos.error?.let {
-                        showError(mainActivity, it)
-                    }
-                }
-            )
+                )
+
+            if (error > -1) {
+                showError(mainActivity, error)
+            }
         } else {
             this.showToast(this.mainActivity, getString(R.string.error_no_internet))
         }
