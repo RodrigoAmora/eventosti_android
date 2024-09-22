@@ -63,6 +63,7 @@ class EventoRepositoryImpl(
 
     override fun buscarEventosPorNomeNaAPI(nome: String,
                                            page: Int): MediatorLiveData<Resource<List<Evento>?>> {
+        mediator.value = Resource(result = listOf<Evento>(), error = null)
         this.buscarEventosPorNome(nome, page,
             completion = {
                 mediator.value = Resource(result = it)
@@ -81,7 +82,7 @@ class EventoRepositoryImpl(
         this.eventoWebClient.buscarEventosPorNome(nome, page,
             completion = { eventos ->
                 mediator.value = Resource(result = eventos)
-//                completion(eventos)
+                completion(eventos)
             },
             failure = { errorCode ->
                 errorCode?.let {
