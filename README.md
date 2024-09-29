@@ -26,13 +26,16 @@ O App usa as seguintes dependências:
 * Room
 * View Model
 
+Acesso ao projeto:
+------------------
+Disponível em:
+```shell script
+https://play.google.com/store/apps/details?id=br.com.rodrigoamora.eventosti
+```
+
 Autor:
 ------
 <b>Rodrigo Amora</b>
 
 LinkedIn: https://linkedin.com/in/rodrigoamora <br>
 E-mail: rodrigo.amora.freitas@gmail.com
-
-Acesso ao projeto:
-------------------
-Disponível em: https://play.google.com/store/apps/details?id=br.com.rodrigoamora.eventosti
