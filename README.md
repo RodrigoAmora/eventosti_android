@@ -28,10 +28,8 @@ O App usa as seguintes dependências:
 
 Acesso ao projeto:
 ------------------
-Disponível em:
-```shell script
+O projeto está disponível através do endereço:<br>
 https://play.google.com/store/apps/details?id=br.com.rodrigoamora.eventosti
-```
 
 Autor:
 ------
