@@ -33,7 +33,8 @@ class ListaEventosFramgent: BaseFragment() {
     private var _binding: FragmentListaEventosBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var fabSearchCharacterByName: FloatingActionButton
+    private lateinit var fabBuscarEventosPorNome: FloatingActionButton
+    private lateinit var fabListarTodosEventos: FloatingActionButton
     private lateinit var recyclerViewEventos: RecyclerView
     private lateinit var searchView: SearchView
     private lateinit var progressBar: ProgressBar
@@ -60,8 +61,8 @@ class ListaEventosFramgent: BaseFragment() {
 
         this.progressBar = this.binding.progressBar
 
-        this.fabSearchCharacterByName = this.binding.fabBuscarEventos
-        this.fabSearchCharacterByName.setOnClickListener {
+        this.fabBuscarEventosPorNome = this.binding.fabBuscarEventos
+        this.fabBuscarEventosPorNome.setOnClickListener {
             if (this.searchView.visibility == View.GONE) {
                 this.searchView.visibility = View.VISIBLE
                 this.searchView.requestFocus()
