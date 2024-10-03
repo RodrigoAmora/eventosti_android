@@ -33,8 +33,8 @@ class ListaEventosFramgent: BaseFragment() {
     private var _binding: FragmentListaEventosBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var fabBuscarEventosPorNome: FloatingActionButton
     private lateinit var fabListarTodosEventos: FloatingActionButton
+    private lateinit var fabBuscarEventosPorNome: FloatingActionButton
     private lateinit var recyclerViewEventos: RecyclerView
     private lateinit var searchView: SearchView
     private lateinit var progressBar: ProgressBar
@@ -69,6 +69,11 @@ class ListaEventosFramgent: BaseFragment() {
             } else {
                 this.searchView.visibility = View.GONE
             }
+        }
+
+        this.fabListarTodosEventos = this.binding.fabListarTodosEventos
+        this.fabListarTodosEventos.setOnClickListener {
+            this.buscarEventos()
         }
 
         this.recyclerViewEventos = this.binding.listEvents
@@ -191,7 +196,7 @@ class ListaEventosFramgent: BaseFragment() {
                 )
 
             if (error > -1) {
-                showError(mainActivity, error)
+                this.showError(this.mainActivity, error)
             }
         } else {
             this.eventoViewModel.buscarEventosDoBancoDeDados().value?.let {
@@ -222,7 +227,7 @@ class ListaEventosFramgent: BaseFragment() {
                 )
 
             if (error > -1) {
-                showError(mainActivity, error)
+                this.showError(this.mainActivity, error)
             }
         } else {
             this.showToast(this.mainActivity, getString(R.string.error_no_internet))
