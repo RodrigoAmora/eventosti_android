@@ -7,6 +7,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- Margins ConstraintsLayout -->
+    <dimen name="margin_fab">10dp</dimen>
     <dimen name="margin_bottom">10dp</dimen>
     <dimen name="margin_bottom_adapter">5dp</dimen>
     <dimen name="margin_end">32dp</dimen>
