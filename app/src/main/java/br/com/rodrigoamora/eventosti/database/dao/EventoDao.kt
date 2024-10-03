@@ -11,7 +11,7 @@ import br.com.rodrigoamora.eventosti.model.Evento
 @Dao
 interface EventoDao {
 
-    @Query("SELECT * FROM Evento e WHERE e.dataInicio >= CURDATE()")
+    @Query("SELECT * FROM Evento")
     fun listarTodos(): LiveData<List<Evento>>
 
     @Insert(onConflict = REPLACE)
