@@ -45,6 +45,8 @@ class ListaEventosFramgent: BaseFragment() {
 
     private lateinit var adapter: ListaEventosAdapter
     private lateinit var eventos: List<Evento>
+
+    private var error: Int = -1
     private val mainActivity: MainActivity by lazy {
         activity as MainActivity
     }
@@ -73,6 +75,7 @@ class ListaEventosFramgent: BaseFragment() {
 
         this.fabListarTodosEventos = this.binding.fabListarTodosEventos
         this.fabListarTodosEventos.setOnClickListener {
+            this.error = -1
             this.buscarEventos()
         }
 
@@ -177,27 +180,22 @@ class ListaEventosFramgent: BaseFragment() {
 
     private fun buscarEventos() {
         if (NetworkUtil.checkConnection(this.mainActivity)) {
-            var error: Int = -1
-
             this.progressBar.show()
             this.eventoViewModel.buscarEventos(this.page)
                 .observe(this.mainActivity,
                     Observer { eventos ->
                         this.progressBar.hide()
+                        this.searchView.setQuery("", false)
 
                         eventos.result?.let {
-                            replaceRecyclerView(it)
+                            this.replaceRecyclerView(it)
                         }
 
                         eventos.error?.let {
-                            error = it
+                            this.error = it
                         }
                     }
                 )
-
-            if (error > -1) {
-                this.showError(this.mainActivity, error)
-            }
         } else {
             this.eventoViewModel.buscarEventosDoBancoDeDados().value?.let {
                 this.progressBar.hide()
@@ -209,25 +207,28 @@ class ListaEventosFramgent: BaseFragment() {
 
     private fun buscarEventoPorNome(nome: String) {
         if (NetworkUtil.checkConnection(this.mainActivity)) {
-            var error: Int = -1
-
             this.progressBar.show()
             this.eventoViewModel.buscarEventosPorNome(nome, page)
                 .observe(this.mainActivity,
                     Observer { eventos ->
+                        this.progressBar.hide()
+                        this.searchView.setQuery("", false)
+
                         eventos.result?.let {
-                            replaceRecyclerView(it)
+                            this.replaceRecyclerView(it)
+                        }
+
+                        eventos.error?.let {
+                            this.error = it
                         }
                         if (eventos.error != null) {
-                            eventos.error?.let {
-                                error = it
-                            }
+                            this.showError(this.mainActivity, this.error)
                         }
                     }
                 )
 
-            if (error > -1) {
-                this.showError(this.mainActivity, error)
+            if (this.error > -1) {
+                this.showError(this.mainActivity, this.error)
             }
         } else {
             this.showToast(this.mainActivity, getString(R.string.error_no_internet))
