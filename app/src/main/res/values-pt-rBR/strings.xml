@@ -29,7 +29,7 @@
     <string name="error_no_internet">Sem internet!</string>
 
     <!-- EVENTO -->
-    <string name="sv_buscar_evento_por_nome">Buscar evento por nomne:</string>
+    <string name="sv_buscar_evento_por_nome">Buscar evento por mone....</string>
     <string name="tv_data">Data:</string>
     <string name="tv_data_inicio">Data início</string>
     <string name="tv_data_fim">Data fime</string>
