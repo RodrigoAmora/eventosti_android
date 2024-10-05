@@ -15,7 +15,7 @@ open class BaseFragment: Fragment() {
             }
 
             404 -> {
-                getString(R.string.error_cant_was_possible_find_event)
+                getString(R.string.error_no_events)
             }
 
             in 500..599 -> {
