@@ -12,8 +12,8 @@ android {
         applicationId "br.com.rodrigoamora.eventosti"
         minSdk 26
         targetSdk 34
-        versionCode 8
-        versionName "1.2.3"
+        versionCode 9
+        versionName "1.2.3b"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
