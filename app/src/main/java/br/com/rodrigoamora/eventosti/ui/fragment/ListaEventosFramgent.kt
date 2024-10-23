@@ -75,7 +75,6 @@ class ListaEventosFramgent: BaseFragment() {
 
         this.fabListarTodosEventos = this.binding.fabListarTodosEventos
         this.fabListarTodosEventos.setOnClickListener {
-            this.error = -1
             this.buscarEventos()
         }
 
@@ -181,6 +180,7 @@ class ListaEventosFramgent: BaseFragment() {
     private fun buscarEventos() {
         if (NetworkUtil.checkConnection(this.mainActivity)) {
             this.progressBar.show()
+            this.error = -1
             this.eventoViewModel.buscarEventos(this.page)
                 .observe(this.mainActivity,
                     Observer { eventos ->
