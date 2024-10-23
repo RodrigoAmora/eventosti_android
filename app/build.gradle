@@ -23,8 +23,6 @@ android {
             debuggable true
             minifyEnabled false
 
-            //buildConfigField "String", "BASE_URL_API", "\"http://10.0.2.2:8080/\""
-
             buildConfigField "String", "DATABASE_NAME", "\"eventosti_database_dev.db\""
             buildConfigField "String", "BASE_URL_API", "\"http://192.168.0.71:8080/\""
         }
