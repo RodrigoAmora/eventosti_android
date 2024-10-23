@@ -5,18 +5,12 @@ import br.com.rodrigoamora.eventosti.network.retorift.service.EventoService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
-import java.util.Collections.list
 
-class EventoWebClient(
-    private val service: EventoService
-) {
+class EventoWebClient(private val service: EventoService) {
 
-    private fun<T> executeRequest(
-        call: Call<T>,
-        completion: (result: T?) -> Unit,
-        failure: (errorCode: Int) -> Unit
-    ) {
+    private fun<T> executeRequest(call: Call<T>,
+                                  completion: (result: T?) -> Unit,
+                                  failure: (errorCode: Int) -> Unit) {
         call.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 when (val responseCode = response.code()) {
@@ -35,7 +29,8 @@ class EventoWebClient(
         })
     }
 
-    fun listarEventos(page: Int, completion: (eventos: List<Evento>) -> Unit,
+    fun listarEventos(page: Int,
+                      completion: (eventos: List<Evento>) -> Unit,
                       failure: (errorCode: Int) -> Unit) {
         executeRequest(this.service.listarEventos(page),
             completion = { eventoResponse ->
