@@ -8,7 +8,6 @@ import android.widget.TextView
 import br.com.rodrigoamora.eventosti.R
 import br.com.rodrigoamora.eventosti.databinding.FragmentDetalhesEventoBinding
 import br.com.rodrigoamora.eventosti.model.Evento
-import br.com.rodrigoamora.eventosti.ui.activiy.MainActivity
 
 class DetalhesEventoFragment: BaseFragment() {
 
@@ -20,10 +19,6 @@ class DetalhesEventoFragment: BaseFragment() {
     private lateinit var tvDescricaoEvento: TextView
     private lateinit var tvSiteEvento: TextView
     private lateinit var tvTipoEvento: TextView
-
-    private val mainActivity: MainActivity by lazy {
-        activity as MainActivity
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
