@@ -6,7 +6,7 @@ O projeto roda a partir do Android 8.0 (API Level 26), usa a arquitetura MVVM, I
 
 Dependências:
 -------------
-O App usa as seguintes dependências:
+O projeto usa as seguintes dependências:
 
 * Constraint Layout
 * Coroutines
