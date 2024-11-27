@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'br.com.rodrigoamora.eventosti'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "br.com.rodrigoamora.eventosti"
@@ -24,7 +24,7 @@ android {
             minifyEnabled false
 
             buildConfigField "String", "DATABASE_NAME", "\"eventosti_database_dev.db\""
-            buildConfigField "String", "BASE_URL_API", "\"http://192.168.0.71:8080/\""
+            buildConfigField "String", "BASE_URL_API", "\"http://192.168.0.128:8080/\""
         }
 
         release {
@@ -53,27 +53,27 @@ android {
 
 dependencies {
     // ANDROID X
-    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.core:core-ktx:1.15.0'
     implementation "androidx.activity:activity-ktx:1.9.3"
     implementation 'androidx.appcompat:appcompat:1.7.0'
 
     // CONSTRAINT LAYOUT
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
 
     // KOIN
     implementation "io.insert-koin:koin-android:3.4.1"
 
     // LIFECYCLE
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.6'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
 
     // MATERIAL DESIGN
     implementation "com.google.android.material:material:1.12.0"
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
 
     // NAVIGATION
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.8.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.4'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.8.4'
 
     // OKHTTP
     implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
@@ -89,7 +89,7 @@ dependencies {
     androidTestImplementation "androidx.room:room-testing:2.6.1"
 
     // SERIALIZATION
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
 
     // SWIPE REFRESH
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
