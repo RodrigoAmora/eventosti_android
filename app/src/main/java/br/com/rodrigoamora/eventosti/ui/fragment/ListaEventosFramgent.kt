@@ -143,6 +143,19 @@ class ListaEventosFramgent: BaseFragment() {
                 }
             }
         })
+
+        this.recyclerViewEventos.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0 && fabListarTodosEventos.isShown) {
+                    fabBuscarEventosPorNome.hide()
+                    fabListarTodosEventos.hide()
+                }
+                if (dy < 0 && !fabListarTodosEventos.isShown) {
+                    fabBuscarEventosPorNome.show()
+                    fabListarTodosEventos.show()
+                }
+            }
+        })
     }
 
     private fun populateRecyclerView(eventos: List<Evento>) {
