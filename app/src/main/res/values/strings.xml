@@ -26,6 +26,7 @@
     <!-- EVENTO -->
     <string name="sv_buscar_evento_por_nome">Search event by name:</string>
     <string name="tv_data">Date:</string>
+    <string name="tv_data_evento">Date: %s</string>
     <string name="tv_data_inicio">Start date</string>
     <string name="tv_data_fim">End date</string>
     <string name="tv_nome_evento_value">Name event</string>
