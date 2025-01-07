@@ -72,8 +72,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
 
     // NAVIGATION
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.4'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.8.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.8.5'
 
     // OKHTTP
     implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
