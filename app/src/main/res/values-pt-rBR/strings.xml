@@ -37,6 +37,10 @@
     <string name="tv_nome_evento_value">Nome evento</string>
     <string name="tv_tipo_evento">Tipo do evento:\n %s</string>
 
+    <string name="hybrido">Híbrido</string>
+    <string name="in_person">Presencial</string>
+    <string name="on_line">ON-Line</string>
+
     <!-- SOBRE -->
     <string name="site">Site: http://eventosti.com.br</string>
     <string name="versao">Versão: %s</string>
