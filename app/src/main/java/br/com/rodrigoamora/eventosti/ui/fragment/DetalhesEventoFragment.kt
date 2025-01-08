@@ -8,6 +8,7 @@ import android.widget.TextView
 import br.com.rodrigoamora.eventosti.R
 import br.com.rodrigoamora.eventosti.databinding.FragmentDetalhesEventoBinding
 import br.com.rodrigoamora.eventosti.model.Evento
+import br.com.rodrigoamora.eventosti.model.TipoEvento
 
 class DetalhesEventoFragment: BaseFragment() {
 
@@ -54,7 +55,13 @@ class DetalhesEventoFragment: BaseFragment() {
         this.tvSiteEvento = this.binding.tvSite
         this.tvSiteEvento.text = evento.site
 
+        val tipoEvento = when(evento.tipoEvento) {
+            TipoEvento.HIBIRDO -> getString(R.string.hybrido)
+            TipoEvento.ON_LINE -> getString(R.string.on_line)
+            TipoEvento.PRESENCIAL -> getString(R.string.in_person)
+        }
+
         this.tvTipoEvento = this.binding.tvTipoEvento
-        this.tvTipoEvento.text = getString(R.string.tv_tipo_evento, evento.tipoEvento)
+        this.tvTipoEvento.text = getString(R.string.tv_tipo_evento, tipoEvento)
     }
 }
