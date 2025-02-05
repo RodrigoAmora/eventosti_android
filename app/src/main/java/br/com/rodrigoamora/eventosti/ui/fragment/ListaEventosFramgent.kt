@@ -224,11 +224,14 @@ class ListaEventosFramgent: BaseFragment() {
             this.eventoViewModel.buscarEventosPorNome(nome, page)
                 .observe(this.mainActivity,
                     Observer { eventos ->
+                        this.error = -1
+
                         this.progressBar.hide()
                         this.searchView.setQuery("", false)
 
                         eventos.result?.let {
                             this.replaceRecyclerView(it)
+                            return@Observer
                         }
 
                         eventos.error?.let {
