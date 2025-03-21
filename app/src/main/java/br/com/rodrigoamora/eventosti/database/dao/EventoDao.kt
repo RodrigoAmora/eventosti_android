@@ -11,7 +11,7 @@ import br.com.rodrigoamora.eventosti.model.Evento
 @Dao
 interface EventoDao {
 
-    @Query("SELECT * FROM Evento")
+    @Query("SELECT * FROM Evento ORDER by dataInicio")
     fun listarTodos(): LiveData<List<Evento>>
 
     @Insert(onConflict = REPLACE)
