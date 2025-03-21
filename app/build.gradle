@@ -12,8 +12,8 @@ android {
         applicationId "br.com.rodrigoamora.eventosti"
         minSdk 26
         targetSdk 34
-        versionCode 14
-        versionName "1.2.7"
+        versionCode 15
+        versionName "1.2.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,7 +24,7 @@ android {
             minifyEnabled false
 
             buildConfigField "String", "DATABASE_NAME", "\"eventosti_database_dev.db\""
-            buildConfigField "String", "BASE_URL_API", "\"http://192.168.0.128:8080/\""
+            buildConfigField "String", "BASE_URL_API", "\"http://192.168.0.133:8080/\""
         }
 
         release {
