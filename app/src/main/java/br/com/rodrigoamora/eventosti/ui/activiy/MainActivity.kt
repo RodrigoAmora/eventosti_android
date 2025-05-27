@@ -31,29 +31,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(this.binding.root)
-
-        setSupportActionBar(this.binding.appBarMain.toolbar)
-
-        val drawerLayout: DrawerLayout = this.binding.drawerLayout
-
-        this.navView = this.binding.navView
-        this.navController = findNavController(R.id.nav_host_fragment_content_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        this.appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_sobre
-            ), drawerLayout
-        )
-
-        setupActionBarWithNavController(this.navController, this.appBarConfiguration)
-        this.navView.setupWithNavController(this.navController)
-        this.navView.itemIconTintList = null
-
-        this.navFooterVersion = this.binding.navFooterVersion
-        this.navFooterVersion.text = getString(R.string.versao, PackageInfoUtil.getVersionName(this))
+        this.configurarBinding()
+        this.configurarNavigationView()
+        this.amostarVersaoDoApp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -76,5 +56,35 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-    
+
+
+    private fun configurarBinding() {
+        this.binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(this.binding.root)
+
+        setSupportActionBar(this.binding.appBarMain.toolbar)
+    }
+
+    private fun configurarNavigationView() {
+        val drawerLayout: DrawerLayout = this.binding.drawerLayout
+
+        this.navView = this.binding.navView
+        this.navController = findNavController(R.id.nav_host_fragment_content_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        this.appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_home, R.id.nav_sobre
+            ), drawerLayout
+        )
+
+        setupActionBarWithNavController(this.navController, this.appBarConfiguration)
+        this.navView.setupWithNavController(this.navController)
+        this.navView.itemIconTintList = null
+    }
+
+    private fun amostarVersaoDoApp() {
+        this.navFooterVersion = this.binding.navFooterVersion
+        this.navFooterVersion.text = getString(R.string.versao, PackageInfoUtil.getVersionName(this))
+    }
 }
