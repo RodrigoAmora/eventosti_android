@@ -12,10 +12,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class EventoRepositoryImpl(
-    private val eventoDao: EventoDao,
-    private val eventoWebClient: EventoWebClient
-): EventoRepository {
+class EventoRepositoryImpl(private val eventoDao: EventoDao,
+                           private val eventoWebClient: EventoWebClient): EventoRepository {
 
     private val mediator = MediatorLiveData<Resource<List<Evento>?>>()
 
@@ -38,7 +36,8 @@ class EventoRepositoryImpl(
         this.listarEventos(page,
             failure = { errorCode ->
                 val currentResource = mediator.value
-                failuresFromWebApiLiveData.value = Resource(result = currentResource?.result, error = errorCode)
+                failuresFromWebApiLiveData.value = Resource(result = currentResource?.result,
+                                                            error = errorCode)
             }
         )
 
