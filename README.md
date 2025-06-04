@@ -28,7 +28,7 @@ O projeto usa as seguintes dependências:
 
 Acesso ao projeto:
 ------------------
-O projeto está disponível através do endereço:<br>
+O projeto está disponível na Play Store:<br>
 https://play.google.com/store/apps/details?id=br.com.rodrigoamora.eventosti
 
 Autor:
