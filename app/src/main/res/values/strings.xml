@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Eventos TI</string>
+    <string name="app_name">Events IT</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -37,7 +37,7 @@
     <string name="on_line">ON-Line</string>
 
     <!-- SOBRE -->
-    <string name="site">Site: http://evwntosti.com.br</string>
+    <string name="site">Site: http://eventosti.com.br</string>
     <string name="versao">Version: %s</string>
     <string name="criado_por">Created by Rodrigo Amora</string>
     <string name="email_autor">rodrigo.amora.freitas@gmail.com</string>
