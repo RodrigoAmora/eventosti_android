@@ -2,7 +2,7 @@
 Descrição:
 ----------
 Projeto para divulgação de eventos de tecnologia.<br><br>
-O projeto roda a partir do Android 8.0 (API Level 26), usa a arquitetura MVVM, Injeção de Dependências e Persistência de dados off-line.
+O projeto roda a partir do Android 12 (API Level 31), usa a arquitetura MVVM, Injeção de Dependências e Persistência de dados off-line.
 
 Dependências:
 -------------
