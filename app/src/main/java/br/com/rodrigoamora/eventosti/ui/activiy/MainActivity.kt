@@ -1,8 +1,10 @@
 package br.com.rodrigoamora.eventosti.ui.activiy
 
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowInsets
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         this.configurarBinding()
         this.configurarNavigationView()
         this.amostarVersaoDoApp()
+        this.esconderNavigationBar()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -87,4 +90,11 @@ class MainActivity : AppCompatActivity() {
         this.navFooterVersion = this.binding.navFooterVersion
         this.navFooterVersion.text = getString(R.string.versao, PackageInfoUtil.getVersionName(this))
     }
+
+    private fun esconderNavigationBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            window.insetsController?.hide(WindowInsets.Type.navigationBars())
+        }
+    }
+
 }
