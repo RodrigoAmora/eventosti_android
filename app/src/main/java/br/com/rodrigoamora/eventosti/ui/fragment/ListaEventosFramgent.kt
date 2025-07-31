@@ -27,6 +27,7 @@ import br.com.rodrigoamora.eventosti.ui.viewmodel.EventoViewModel
 import br.com.rodrigoamora.eventosti.util.NetworkUtil
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.core.view.isGone
 
 class ListaEventosFramgent: BaseFragment() {
 
@@ -65,7 +66,7 @@ class ListaEventosFramgent: BaseFragment() {
 
         this.fabBuscarEventosPorNome = this.binding.fabBuscarEventos
         this.fabBuscarEventosPorNome.setOnClickListener {
-            if (this.searchView.visibility == View.GONE) {
+            if (this.searchView.isGone) {
                 this.searchView.visibility = View.VISIBLE
                 this.searchView.requestFocus()
             } else {
