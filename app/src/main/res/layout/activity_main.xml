@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    app:layout_behavior="@string/action_settings"
     tools:openDrawer="start">
 
     <include
@@ -35,14 +36,6 @@
                 android:layout_height="2dp"
                 android:background="@color/black"
                 android:orientation="vertical"/>
-
-            <TextView
-                android:id="@+id/nav_footer_version"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:gravity="center"
-                android:text="Your Footer Text Here" />
-
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
 

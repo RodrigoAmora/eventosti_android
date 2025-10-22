@@ -1,12 +1,10 @@
 package br.com.rodrigoamora.eventosti.ui.activiy
 
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.WindowInsets
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -16,7 +14,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.rodrigoamora.eventosti.R
 import br.com.rodrigoamora.eventosti.databinding.ActivityMainBinding
-import br.com.rodrigoamora.eventosti.util.PackageInfoUtil
 import com.google.android.material.navigation.NavigationView
 
 
@@ -28,15 +25,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navView: NavigationView
     private lateinit var navController: NavController
 
-    private lateinit var navFooterVersion: TextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         this.configurarBinding()
         this.configurarNavigationView()
-        this.amostarVersaoDoApp()
-        this.esconderNavigationBar()
+        this.ajustarNavigationBar()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -86,15 +80,8 @@ class MainActivity : AppCompatActivity() {
         this.navView.itemIconTintList = null
     }
 
-    private fun amostarVersaoDoApp() {
-        this.navFooterVersion = this.binding.navFooterVersion
-        this.navFooterVersion.text = getString(R.string.versao, PackageInfoUtil.getVersionName(this))
-    }
-
-    private fun esconderNavigationBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            window.insetsController?.hide(WindowInsets.Type.navigationBars())
-        }
+    private fun ajustarNavigationBar() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
     }
 
 }
