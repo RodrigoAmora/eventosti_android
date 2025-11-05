@@ -1,11 +1,11 @@
 # eventosti_android
-Descrição:
-----------
+Descrição
+---------
 Projeto para divulgação de eventos de tecnologia.<br><br>
 O projeto roda a partir do Android 12 (API Level 31), usa a arquitetura MVVM, Injeção de Dependências e Persistência de dados off-line.
 
-Dependências:
--------------
+Dependências
+------------
 O projeto usa as seguintes dependências:
 
 * Constraint Layout
@@ -26,13 +26,13 @@ O projeto usa as seguintes dependências:
 * Room
 * View Model
 
-Acesso ao projeto:
-------------------
+Acesso ao projeto
+-----------------
 O projeto está disponível na Play Store:<br>
 https://play.google.com/store/apps/details?id=br.com.rodrigoamora.eventosti
 
-Autor:
-------
+Autor
+-----
 <b>Rodrigo Amora</b>
 
 LinkedIn: https://linkedin.com/in/rodrigoamora <br>
