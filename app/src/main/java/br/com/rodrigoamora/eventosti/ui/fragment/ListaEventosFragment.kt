@@ -31,7 +31,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.core.view.isGone
 
-class ListaEventosFramgent: BaseFragment() {
+class ListaEventosFragment: BaseFragment() {
 
     private var _binding: FragmentListaEventosBinding? = null
     private val binding get() = _binding!!
